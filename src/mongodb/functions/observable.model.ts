@@ -7,7 +7,7 @@ import {Model} from 'mongoose';
 import {ChangeStream} from 'mongodb';
 
 class ObservableModel extends Subject<any> {
-	private _model: any;
+	private _model: Model<any>;
 	private _stream: ChangeStream;
 
 	constructor(model: Model<any>) {

@@ -31,7 +31,6 @@ export default class CollectionStore extends AStore {
 		let reload = false;
 		if (_.isEmpty(change)) {
 			reload = true;
-
 		} else {
 			const test = sift(_.omit(this._query, ['createdAt', 'updatedAt']));
 			switch (type) {
@@ -74,7 +73,6 @@ export default class CollectionStore extends AStore {
 				replacement[virtual] = await Promise.resolve(document[virtual]);
 			}
 			return this.emitMany({data: replacement});
-
 		} else {
 			let data = [];
 			const total = await this._model.countDocuments(this._query);
