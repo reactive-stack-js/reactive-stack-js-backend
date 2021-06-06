@@ -1,6 +1,6 @@
 {
 	"name": "reactive-stack-js-backend",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "reactive-stack backend",
 	"engines": {
 		"node": ">=14"
@@ -9,6 +9,13 @@
 	"types": "./lib/reactive.stack.backend.d.ts",
 	"author": "Predrag Stojadinovic <predrag@stojadinovic.net>",
 	"license": "Unlicense",
+	"files": [
+		"lib/**/*"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/reactive-stack-js/reactive-stack-js-backend.git"
+	},
 	"scripts": {
 		"all": "yarn & tsc & yarn clean & yarn build & yarn test & yarn docs",
 		"build": "del /S /Q lib\\* && tsc",
