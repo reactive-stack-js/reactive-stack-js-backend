@@ -10,7 +10,7 @@ import AStore from './store/a.store';
 import storeFactory from './store/factories/store.factory';
 import {StoreSubscriptionUpdateType} from './store/t.store';
 import IUserManager from './auth/i.user.manager';
-import DataMiddlewareMap from "./middleware/data.middleware.map";
+import DataMiddlewareMap from './middleware/data.middleware.map';
 
 export default class ReactiveStackClient extends Subject<any> {
 	private _userManager: IUserManager;
@@ -26,6 +26,13 @@ export default class ReactiveStackClient extends Subject<any> {
 		this._userManager = userManager;
 		this._stores = new Map<string, AStore>();
 		this._subscriptions = new Map<string, Subscription>();
+	}
+
+	public disconnected(): void {
+		// console.log(' - ReactiveStackClient disconnected');
+		this.clearSubscriptions();
+		this._userManager.disconnected();
+		clearTimeout(this._timeout);
 	}
 
 	public async consume(message: any): Promise<void> {
@@ -84,7 +91,7 @@ export default class ReactiveStackClient extends Subject<any> {
 		if (location === this._location) return;
 		this._location = location;
 
-		this.destroy();
+		this.clearSubscriptions();
 
 		this._stores = new Map<string, AStore>();
 		this._subscriptions = new Map<string, Subscription>();
@@ -131,7 +138,7 @@ export default class ReactiveStackClient extends Subject<any> {
 		}
 	}
 
-	public destroy(): void {
+	private clearSubscriptions(): void {
 		const subscriptionsKeys = this._subscriptions.keys();
 		for (const subscriptionKey of subscriptionsKeys) {
 			let subscription = this._subscriptions.get(subscriptionKey);
@@ -149,9 +156,5 @@ export default class ReactiveStackClient extends Subject<any> {
 		}
 		this._stores.clear();
 		this._stores = null;
-
-		this._userManager.disconnected();
-
-		clearTimeout(this._timeout);
 	}
 }
