@@ -4,7 +4,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import {filter} from 'lodash';
+import {endsWith, filter} from 'lodash';
 
 import CollectionsModelsMap from '../collections.models.map';
 
@@ -15,6 +15,7 @@ const _processFile = (folder: string, file: string): void => {
 };
 
 const processModels = (folder: string): void => {
+	if (endsWith(folder, 'mixins')) return;
 	const fileNames = fs.readdirSync(folder);
 	const files = filter(fileNames, (fileName: string) => !fs.lstatSync(path.join(folder, fileName)).isDirectory());
 	files.forEach((file: string) => {
