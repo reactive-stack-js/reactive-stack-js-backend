@@ -24,11 +24,15 @@ import CountStore from "./store/count.store";
 import DocumentStore from "./store/document.store";
 import CollectionStore from "./store/collection.store";
 
+import RoutesMap from "./routing/routes.map";
+import processFastifyBlipp from "./routing/functions/process.fastify.blipp";
+
 export {
 	ReactiveStackClient,
 	initiateCronjobs, initiateWorkers, addFastifyRoutes,
 
 	DataMiddlewareMap,
+	processFastifyBlipp, RoutesMap,
 
 	processModels, observableDatabase, observableModel,
 	MongoDBConnector, CollectionsModelsMap,
