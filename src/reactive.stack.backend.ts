@@ -3,7 +3,7 @@
 
 import ReactiveStackClient from './reactive.stack.client';
 
-import IUserManager, {UserManagerRefreshType} from './auth/i.user.manager';
+import IConnectionManager, {ConnectionManagerRefreshType} from './auth/i.connection.manager';
 
 import initiateCronjobs from './functions/initiate.cronjobs';
 import initiateWorkers from './functions/initiate.workers';
@@ -49,8 +49,8 @@ export {
 	StoreScopeType,
 	StoreSubscriptionUpdateType,
 	StoreSubscriptionConfigType,
-	IUserManager,
-	UserManagerRefreshType
+	IConnectionManager,
+	ConnectionManagerRefreshType
 };
 
 const ReactiveStackBackend = {};

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-export type UserManagerRefreshType = {
+export type ConnectionManagerRefreshType = {
 	type: 'refresh';
-	payload: {jwt: string; user: any};
+	payload: { jwt: string; user: any };
 	refresh_in: number;
 };
 
-export default interface IUserManager {
+export default interface IConnectionManager {
 	user(): any;
 
 	connected(jwt: any): void;
@@ -18,5 +18,5 @@ export default interface IUserManager {
 
 	disconnected(): void;
 
-	checkSession(): UserManagerRefreshType;
+	checkSession(): ConnectionManagerRefreshType;
 }

@@ -9,11 +9,11 @@ import {Subject, Subscription} from 'rxjs';
 import AStore from './store/a.store';
 import storeFactory from './store/factories/store.factory';
 import {StoreSubscriptionUpdateType} from './store/t.store';
-import IUserManager from './auth/i.user.manager';
+import IConnectionManager from './auth/i.connection.manager';
 import DataMiddlewareMap from './middleware/data.middleware.map';
 
 export default class ReactiveStackClient extends Subject<any> {
-	private _userManager: IUserManager;
+	private _connectionManager: IConnectionManager;
 
 	private _ping = 0;
 	private _location: string;
@@ -21,9 +21,9 @@ export default class ReactiveStackClient extends Subject<any> {
 	private _subscriptions: Map<string, Subscription>;
 	private _timeout: Timeout;
 
-	public constructor(userManager: IUserManager) {
+	public constructor(connectionManager: IConnectionManager) {
 		super();
-		this._userManager = userManager;
+		this._connectionManager = connectionManager;
 		this._stores = new Map<string, AStore>();
 		this._subscriptions = new Map<string, Subscription>();
 	}
@@ -31,7 +31,7 @@ export default class ReactiveStackClient extends Subject<any> {
 	public disconnected(): void {
 		// console.log(' - ReactiveStackClient disconnected');
 		this.clearSubscriptions();
-		this._userManager.disconnected();
+		this._connectionManager.disconnected();
 		clearTimeout(this._timeout);
 	}
 
@@ -44,7 +44,7 @@ export default class ReactiveStackClient extends Subject<any> {
 				return;
 
 			case 'authenticate':
-				this._userManager.connected(message.jwt);
+				this._connectionManager.connected(message.jwt);
 				this._checkSession();
 				return;
 
@@ -71,11 +71,11 @@ export default class ReactiveStackClient extends Subject<any> {
 	private _processPong(message: any): void {
 		const response = new Date().getTime();
 		this._ping = response - message.id;
-		this._userManager.ping(this._ping);
+		this._connectionManager.ping(this._ping);
 	}
 
 	private _checkSession(): void {
-		const check = this._userManager.checkSession();
+		const check = this._connectionManager.checkSession();
 		if (check) this.next(check);
 
 		const refreshIn = get(check, 'refresh_in', 299000); // 299000 = 4min 59sec
@@ -96,7 +96,7 @@ export default class ReactiveStackClient extends Subject<any> {
 		this._stores = new Map<string, AStore>();
 		this._subscriptions = new Map<string, Subscription>();
 
-		this._userManager.location(location);
+		this._connectionManager.location(location);
 	}
 
 	private removeSubscription(target: string): void {
@@ -125,7 +125,7 @@ export default class ReactiveStackClient extends Subject<any> {
 				next: async (m: any): Promise<void> => {
 					if (DataMiddlewareMap.hasMiddleware(scope, observe)) {
 						const process = DataMiddlewareMap.getMiddleware(scope, observe);
-						m = await process(m, this._userManager.user);
+						m = await process(m, this._connectionManager.user);
 					}
 					this.next(m);
 				},
