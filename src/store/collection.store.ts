@@ -45,13 +45,14 @@ export default class CollectionStore extends AStore {
 
 				case 'replace':
 				case 'update':
-					let us = [];
-					if (description) {
+					if (!description) reload = true;
+					else {
+						let us = [];
 						const {updatedFields, removedFields} = description;
 						us = _.concat(removedFields, _.keys(updatedFields));
+						const qs = _.keys(this._fields);
+						reload = !_.isEmpty(_.intersection(qs, us)) || test(document);
 					}
-					const qs = _.keys(this._fields);
-					reload = !_.isEmpty(_.intersection(qs, us)) || test(document);
 					break;
 			}
 		}
