@@ -1,6 +1,6 @@
 {
 	"name": "reactive-stack-js-backend",
-	"version": "0.1.9",
+	"version": "0.2.0",
 	"description": "reactive-stack backend",
 	"engines": {
 		"node": ">=14"
