@@ -58,7 +58,7 @@ export default class CollectionStore extends AStore {
 		}
 		if (!reload) return;
 
-		console.log(' - DB Reload Collection for query:', this._query);
+		console.log(' - DB Reload Collection for query:', this._query, this._sort, this._paging, this._fields);
 
 		// TODO: cleanup this mess:
 		if (document && this._incremental) {
