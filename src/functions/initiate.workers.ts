@@ -4,10 +4,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import {filter} from 'lodash';
+import {filter, isFunction} from 'lodash';
 
 export type WorkerType = {
-	init: () => void;
+	init?: () => Promise<void>;
 	work: () => void;
 };
 
@@ -18,8 +18,9 @@ const initiateWorkers = (folder: string): void => {
 		const absoluteFilePath = path.join(folder, file);
 		const worker: WorkerType = require(absoluteFilePath).default;
 		const {init, work} = worker;
-		work?.(); // <- if (work) work();
-		init?.(); // <- if (init) init();
+
+		if (isFunction(init)) init().then(() => work?.());
+		else work?.();			// work?.() => if (work) work();
 	});
 
 	const folders = filter(fileNames, (name: string) => fs.lstatSync(path.join(folder, name)).isDirectory());
