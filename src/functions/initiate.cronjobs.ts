@@ -10,7 +10,8 @@ import * as cron from 'node-cron';
 export type CronJobType = {
 	schedule: string;
 	job: () => void;
-	options: any;
+	options?: any;
+	init?: () => Promise<void>;
 };
 
 const initiateCronjobs = (folder: string): void => {
@@ -19,8 +20,9 @@ const initiateCronjobs = (folder: string): void => {
 	files.forEach((file: string) => {
 		const absoluteFilePath = path.join(folder, file);
 		const cronjob: CronJobType = require(absoluteFilePath).default;
-		const {schedule, job, options} = cronjob;
+		const {schedule, job, options, init} = cronjob;
 		cron.schedule(schedule, job, options);
+		init?.();
 	});
 
 	const folders = filter(fileNames, (name: string) => fs.lstatSync(path.join(folder, name)).isDirectory());

@@ -20,7 +20,7 @@ const initiateWorkers = (folder: string): void => {
 		const {init, work} = worker;
 
 		if (isFunction(init)) init().then(() => work?.());
-		else work?.();			// work?.() => if (work) work();
+		else work?.();
 	});
 
 	const folders = filter(fileNames, (name: string) => fs.lstatSync(path.join(folder, name)).isDirectory());
