@@ -31,8 +31,8 @@ export default abstract class AStore extends Subject<any> {
 	protected _sort: any;
 	protected _fields: any;
 	protected _paging: any;
-	protected _populates: string[];
-	protected _virtuals: string[];
+	protected _populates: any[];
+	protected _virtuals: any[];
 
 	protected _subscription: Subscription;
 
