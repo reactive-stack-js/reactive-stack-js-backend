@@ -22,7 +22,7 @@ export default class CountStore extends AStore {
 
 	protected async load(change: any): Promise<void> {
 		if (isEmpty(this._config)) return this.emitOne();
-		console.log(' - DB Reload Count for query:', this._query);
+		console.log('rsjs -> DB Reload Count for query:', this._query);
 		const count = await this._model.countDocuments(this._query);
 		this.emitOne(count);
 	}

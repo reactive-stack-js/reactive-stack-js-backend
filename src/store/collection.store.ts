@@ -22,7 +22,7 @@ export default class CollectionStore extends AStore {
 	}
 
 	protected async load(change: any): Promise<void> {
-		// console.log(" - CollectionStore load", change, this._target, this._query, this._sort, this._fields, this._paging);
+		// console.log('rsjs -> CollectionStore load', change, this._target, this._query, this._sort, this._fields, this._paging);
 		if (_.isEmpty(this._config)) return this.emitMany();
 
 		const {operationType: type, documentKey, updateDescription: description, fullDocument: document} = change;
@@ -59,7 +59,7 @@ export default class CollectionStore extends AStore {
 		}
 		if (!reload) return;
 
-		console.log(' - DB Reload Collection for query:', {query: this._query, sort: this._sort, paging: this._paging, fields: this._fields});
+		console.log('rsjs -> DB Reload Collection for query:', {query: this._query, sort: this._sort, paging: this._paging, fields: this._fields});
 
 		// TODO: cleanup this mess:
 		if (document && this._incremental) {

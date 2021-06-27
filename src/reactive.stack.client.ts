@@ -29,14 +29,14 @@ export default class ReactiveStackClient extends Subject<any> {
 	}
 
 	public disconnected(): void {
-		console.log(' - ReactiveStackClient disconnected');
+		// console.log('rsjs -> ReactiveStackClient disconnected');
 		this.clearSubscriptions();
 		this._connectionManager.disconnected();
 		clearTimeout(this._timeout);
 	}
 
 	public async consume(message: any): Promise<void> {
-		// console.log(" - ReactiveStackClient::consume received message", message.type);
+		// console.log('rsjs -> ReactiveStackClient::consume received message", message.type);
 
 		switch (message.type) {
 			case 'pong':
@@ -87,7 +87,7 @@ export default class ReactiveStackClient extends Subject<any> {
 	}
 
 	private set location(location: string) {
-		console.log(` - ReactiveStackClient location: old:[${this._location}] new:[${location}]`);
+		// console.log('rsjs -> ReactiveStackClient location: old:[${this._location}] new:[${location}]`);
 		if (location === this._location) return;
 		this._location = location;
 
@@ -100,7 +100,7 @@ export default class ReactiveStackClient extends Subject<any> {
 	}
 
 	private removeSubscription(target: string): void {
-		console.log(` - ReactiveStackClient removeSubscription: ${target}`);
+		// console.log('rsjs -> ReactiveStackClient removeSubscription: ${target}`);
 		let store = this._stores.get(target);
 		if (store) store.destroy();
 		store = null;
@@ -114,7 +114,7 @@ export default class ReactiveStackClient extends Subject<any> {
 
 	private updateSubscription(subscriptionConfig: StoreSubscriptionUpdateType): void {
 		const {target, scope, observe, config} = subscriptionConfig;
-		console.log(` - ReactiveStackClient updateSubscription: ${target}`);
+		// console.log('rsjs -> ReactiveStackClient updateSubscription: ${target}`);
 
 		let store = this._stores.get(target);
 		if (store) {
@@ -143,7 +143,7 @@ export default class ReactiveStackClient extends Subject<any> {
 
 	private clearSubscriptions(): void {
 		const subscriptionsKeys = this._subscriptions.keys();
-		console.log(' - ReactiveStackClient clearSubscriptions', subscriptionsKeys);
+		// console.log(' -- ReactiveStackClient clearSubscriptions', subscriptionsKeys);
 		for (const subscriptionKey of subscriptionsKeys) {
 			let subscription = this._subscriptions.get(subscriptionKey);
 			subscription.unsubscribe();
