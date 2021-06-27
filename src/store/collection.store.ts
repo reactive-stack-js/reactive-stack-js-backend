@@ -50,7 +50,8 @@ export default class CollectionStore extends AStore {
 						let us = [];
 						const {updatedFields, removedFields} = description;
 						us = _.concat(removedFields, _.keys(updatedFields));
-						const qs = _.keys(this._fields);
+
+						const qs = this.shouldConsiderFields() ? _.keys(this._fields) : [];
 						reload = !_.isEmpty(_.intersection(qs, us)) || test(document);
 					}
 					break;

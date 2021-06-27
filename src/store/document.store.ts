@@ -2,8 +2,8 @@
 'use strict';
 
 import sift from 'sift';
-import {filter} from 'rxjs/operators';
 import * as _ from 'lodash';
+import {filter} from 'rxjs/operators';
 
 import AStore, {EStoreType} from './a.store';
 import observableModel from '../mongodb/functions/observable.model';
@@ -62,7 +62,7 @@ export default class DocumentStore extends AStore {
 				case 'replace':
 				case 'update':
 					if (id && id === key) reload = true;
-					else if (_.isEmpty(this._fields)) reload = true;
+					else if (!this.shouldConsiderFields()) reload = true;
 					else {
 						if (!description) reload = true;
 						else {

@@ -5,6 +5,7 @@ import {isArray, each, cloneDeep, isEmpty, set} from 'lodash';
 import {Model} from 'mongoose';
 import {Subject, Subscription} from 'rxjs';
 import * as jsondiffpatch from 'jsondiffpatch';
+import * as _ from "lodash";
 
 export enum EStoreType {
 	DOCUMENT,
@@ -105,6 +106,10 @@ export default abstract class AStore extends Subject<any> {
 		});
 	}
 
+	protected shouldConsiderFields(): boolean {
+		return !_.isEmpty(this._fields) && !_.includes(_.values(this._fields), -1);
+	}
+
 	public set config(config: any) {
 		if (!this._isValidConfig(config)) return;
 
@@ -122,4 +127,5 @@ export default abstract class AStore extends Subject<any> {
 		const diff = jsondiffpatch.diff(this._config, config);
 		return !isEmpty(diff);
 	}
+
 }

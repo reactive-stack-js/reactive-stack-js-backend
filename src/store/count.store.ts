@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-import {concat, intersection, isEmpty, keys} from 'lodash';
+import {isEmpty} from 'lodash';
 import {Model} from 'mongoose';
 
 import observableModel from '../mongodb/functions/observable.model';
@@ -22,21 +22,6 @@ export default class CountStore extends AStore {
 
 	protected async load(change: any): Promise<void> {
 		if (isEmpty(this._config)) return this.emitOne();
-
-		let reload = true;
-
-		const {operationType: type} = change;
-		if ('update' === type) {
-			const {updateDescription: description} = change;
-			if (!description) reload = true;
-			else {
-				const {updatedFields, removedFields} = description;
-				const us = concat(removedFields, keys(updatedFields));
-				reload = !isEmpty(intersection(keys(this._fields), us));
-			}
-		}
-		if (!reload) return;
-
 		console.log(' - DB Reload Count for query:', this._query);
 		const count = await this._model.countDocuments(this._query);
 		this.emitOne(count);
