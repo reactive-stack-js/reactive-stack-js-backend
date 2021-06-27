@@ -107,7 +107,7 @@ export default abstract class AStore extends Subject<any> {
 	}
 
 	protected shouldConsiderFields(): boolean {
-		return !_.isEmpty(this._fields) && !_.includes(_.values(this._fields), -1);
+		return !_.isEmpty(this._fields) && !_.includes(_.values(this._fields), 0);
 	}
 
 	public set config(config: any) {
