@@ -4,7 +4,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import {endsWith, filter} from 'lodash';
+import {endsWith, find, isString, filter} from 'lodash';
 
 import CollectionsModelsMap from '../collections.models.map';
 
@@ -14,8 +14,16 @@ const _processFile = (folder: string, file: string): void => {
 	CollectionsModelsMap.addCollectionToModelMapping(model);
 };
 
-const processModels = (folder: string): void => {
-	if (endsWith(folder, 'mixins')) return;
+const _isExcluded = (folder: string, exclude: string | string[]): boolean => {
+	if (!exclude) return false;
+	return isString(exclude) ?
+		endsWith(folder, exclude) :
+		!!find(exclude, (e: string) => endsWith(folder, e));
+};
+
+const processModels = (folder: string, exclude?: string | string[]): void => {
+	if (_isExcluded(folder, exclude)) return;
+
 	const fileNames = fs.readdirSync(folder);
 	const files = filter(fileNames, (fileName: string) => !fs.lstatSync(path.join(folder, fileName)).isDirectory());
 	files.forEach((file: string) => {
