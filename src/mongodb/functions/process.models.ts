@@ -35,6 +35,6 @@ const processModels = (folder: string, exclude?: string | string[]): void => {
 	});
 
 	const folders = filter(fileNames, (fileName: string) => fs.lstatSync(path.join(folder, fileName)).isDirectory());
-	folders.forEach((sub: string) => processModels(path.join(folder, sub)));
+	folders.forEach((sub: string) => processModels(path.join(folder, sub), exclude));
 };
 export default processModels;
