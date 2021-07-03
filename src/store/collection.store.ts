@@ -5,7 +5,8 @@ import sift from 'sift';
 import * as _ from 'lodash';
 import {Model} from 'mongoose';
 
-import AStore, {EStoreType} from './a.store';
+import AStore from './a.store';
+import EStoreType from "../_enums/store.type.enum";
 import observableModel from '../mongodb/functions/observable.model';
 
 export default class CollectionStore extends AStore {

@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-export type ConnectionManagerRefreshType = {
-	type: 'refresh';
-	payload: { jwt: string; user: any };
-	refresh_in: number;
-};
+import ConnectionManagerRefreshType from "../_types/connection.manager.refresh.type";
 
 export default interface IConnectionManager {
 	user(): any;

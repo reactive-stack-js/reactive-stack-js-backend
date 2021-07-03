@@ -7,12 +7,7 @@ import * as path from 'path';
 import {filter} from 'lodash';
 import * as cron from 'node-cron';
 
-export type CronJobType = {
-	schedule: string;
-	job: () => void;
-	options?: any;
-	init?: () => Promise<void>;
-};
+import CronJobType from "../_types/cronjob.type";
 
 const initiateCronjobs = (folder: string): void => {
 	const fileNames = fs.readdirSync(folder);

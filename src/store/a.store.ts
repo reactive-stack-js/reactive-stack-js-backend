@@ -1,17 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
-import {isArray, each, cloneDeep, isEmpty, set} from 'lodash';
 import {Model} from 'mongoose';
 import {Subject, Subscription} from 'rxjs';
 import * as jsondiffpatch from 'jsondiffpatch';
-import * as _ from "lodash";
+import {cloneDeep, each, includes, isArray, isEmpty, set, values} from 'lodash';
 
-export enum EStoreType {
-	DOCUMENT,
-	COLLECTION,
-	COUNT
-}
+import EStoreType from "../_enums/store.type.enum";
 
 // tslint:disable-next-line:variable-name
 const _baseMessage = (target: string, incremental = false): any => ({
@@ -107,7 +102,7 @@ export default abstract class AStore extends Subject<any> {
 	}
 
 	protected shouldConsiderFields(): boolean {
-		return !_.isEmpty(this._fields) && !_.includes(_.values(this._fields), 0);
+		return !isEmpty(this._fields) && !includes(values(this._fields), 0);
 	}
 
 	public set config(config: any) {

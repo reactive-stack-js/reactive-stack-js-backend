@@ -1,20 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-export type StoreScopeType = 'count' | 'one' | 'many';
+import StoreScopeType from "./store.scope.type";
+import StoreSubscriptionConfigType from "./store.subscription.config.type";
 
-export type StoreSubscriptionConfigType = {
-	query: any;
-	sort?: any;
-	fields?: any;
-	skip?: number;
-	page?: number;
-	pageSize?: number;
-	strict: false;
-	incremental: false;
-};
-
-export type StoreSubscriptionUpdateType = {
+type StoreSubscriptionUpdateType = {
 	target: string;
 	scope: StoreScopeType;
 	config: StoreSubscriptionConfigType;
@@ -28,3 +18,4 @@ export type StoreSubscriptionUpdateType = {
 	// 	name: string			// collectionName
 	// }
 };
+export default StoreSubscriptionUpdateType;

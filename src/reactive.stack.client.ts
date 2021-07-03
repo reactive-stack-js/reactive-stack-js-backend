@@ -8,9 +8,9 @@ import {Subject, Subscription} from 'rxjs';
 
 import AStore from './store/a.store';
 import storeFactory from './store/factories/store.factory';
-import {StoreSubscriptionUpdateType} from './store/t.store';
 import IConnectionManager from './auth/i.connection.manager';
 import DataMiddlewareMap from './middleware/data.middleware.map';
+import StoreSubscriptionUpdateType from "./_types/store.subscription.update.type";
 
 export default class ReactiveStackClient extends Subject<any> {
 	private _connectionManager: IConnectionManager;
