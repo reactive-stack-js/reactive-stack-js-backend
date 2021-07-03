@@ -11,6 +11,8 @@ import CollectionsModelsMap from '../collections.models.map';
 const _processFile = (folder: string, file: string): void => {
 	const fullPath = path.join(folder, file);
 	const model = require(fullPath).default;
+	if (!model) console.log(' - ERROR:', `Model not found in ${folder}/${file}`);
+	else if (!model?.collection) console.log(' - ERROR:', `Model collection not defined in ${folder}/${file}`);
 	CollectionsModelsMap.addCollectionToModelMapping(model);
 };
 
