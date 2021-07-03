@@ -52,40 +52,40 @@ import storeFactory from './store/factories/store.factory';
 
 export {
 	ReactiveStackClient,
-
 	// _enums
 	EStoreType,
-
 	// _types
 	ConnectionManagerRefreshType,
 	CronJobType,
-	StoreScopeType, StoreSubscriptionConfigType, StoreSubscriptionUpdateType,
+	StoreScopeType,
+	StoreSubscriptionConfigType,
+	StoreSubscriptionUpdateType,
 	WorkerType,
-
 	// auth
 	IConnectionManager,
-
 	// functions
-	initiateWorkers, initiateCronjobs,
-
+	initiateWorkers,
+	initiateCronjobs,
 	// middleware
 	DataMiddlewareMap,
-
 	// mongodb
-	MongoDBConnector, CollectionsModelsMap,
-
+	MongoDBConnector,
+	CollectionsModelsMap,
 	// mongodb functions
-	processModels, observableModel, observableDatabase,
-
+	processModels,
+	observableModel,
+	observableDatabase,
 	// routing
 	RoutesMap,
-
 	// routing functions
-	addFastifyRoutes, cleanRelativePath, processFastifyBlipp,
-
+	addFastifyRoutes,
+	cleanRelativePath,
+	processFastifyBlipp,
 	// store
-	AStore, CountStore, DocumentStore, CollectionStore,
-
+	AStore,
+	CountStore,
+	DocumentStore,
+	CollectionStore,
 	// store factories
 	storeFactory
 };

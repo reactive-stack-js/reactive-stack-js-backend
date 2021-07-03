@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
-import StoreScopeType from "./store.scope.type";
-import StoreSubscriptionConfigType from "./store.subscription.config.type";
+import StoreScopeType from './store.scope.type';
+import StoreSubscriptionConfigType from './store.subscription.config.type';
 
 type StoreSubscriptionUpdateType = {
 	target: string;

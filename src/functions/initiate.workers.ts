@@ -6,7 +6,7 @@ import * as path from 'path';
 
 import {filter, isFunction} from 'lodash';
 
-import WorkerType from "../_types/worker.type";
+import WorkerType from '../_types/worker.type';
 
 const initiateWorkers = (folder: string): void => {
 	const fileNames = fs.readdirSync(folder);

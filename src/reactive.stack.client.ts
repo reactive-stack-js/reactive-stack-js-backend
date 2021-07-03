@@ -10,7 +10,7 @@ import AStore from './store/a.store';
 import storeFactory from './store/factories/store.factory';
 import IConnectionManager from './auth/i.connection.manager';
 import DataMiddlewareMap from './middleware/data.middleware.map';
-import StoreSubscriptionUpdateType from "./_types/store.subscription.update.type";
+import StoreSubscriptionUpdateType from './_types/store.subscription.update.type';
 
 export default class ReactiveStackClient extends Subject<any> {
 	private _connectionManager: IConnectionManager;
@@ -119,7 +119,6 @@ export default class ReactiveStackClient extends Subject<any> {
 		let store = this._stores.get(target);
 		if (store) {
 			store.config = config;
-
 		} else {
 			store = storeFactory(scope, observe, target);
 

@@ -5,7 +5,7 @@ import {isEmpty} from 'lodash';
 import {Model} from 'mongoose';
 
 import AStore from './a.store';
-import EStoreType from "../_enums/store.type.enum";
+import EStoreType from '../_enums/store.type.enum';
 import observableModel from '../mongodb/functions/observable.model';
 
 export default class CountStore extends AStore {

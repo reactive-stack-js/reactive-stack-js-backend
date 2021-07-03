@@ -16,9 +16,7 @@ const _processFile = (folder: string, file: string): void => {
 
 const _isExcluded = (folder: string, exclude: string | string[]): boolean => {
 	if (!exclude) return false;
-	return isString(exclude) ?
-		endsWith(folder, exclude) :
-		!!find(exclude, (e: string) => endsWith(folder, e));
+	return isString(exclude) ? endsWith(folder, exclude) : !!find(exclude, (e: string) => endsWith(folder, e));
 };
 
 const processModels = (folder: string, exclude?: string | string[]): void => {

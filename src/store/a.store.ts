@@ -6,7 +6,7 @@ import {Subject, Subscription} from 'rxjs';
 import * as jsondiffpatch from 'jsondiffpatch';
 import {cloneDeep, each, includes, isArray, isEmpty, set, values} from 'lodash';
 
-import EStoreType from "../_enums/store.type.enum";
+import EStoreType from '../_enums/store.type.enum';
 
 // tslint:disable-next-line:variable-name
 const _baseMessage = (target: string, incremental = false): any => ({
@@ -122,5 +122,4 @@ export default abstract class AStore extends Subject<any> {
 		const diff = jsondiffpatch.diff(this._config, config);
 		return !isEmpty(diff);
 	}
-
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-import ConnectionManagerRefreshType from "../_types/connection.manager.refresh.type";
+import ConnectionManagerRefreshType from '../_types/connection.manager.refresh.type';
 
 export default interface IConnectionManager {
 	user(): any;

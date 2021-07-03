@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import {filter} from 'rxjs/operators';
 
 import AStore from './a.store';
-import EStoreType from "../_enums/store.type.enum";
+import EStoreType from '../_enums/store.type.enum';
 import observableModel from '../mongodb/functions/observable.model';
 
 // tslint:disable-next-line:variable-name
