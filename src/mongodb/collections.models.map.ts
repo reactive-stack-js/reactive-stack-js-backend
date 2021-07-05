@@ -21,6 +21,14 @@ export default class CollectionsModelsMap {
 		return null;
 	}
 
+	public static keys() {
+		return Array.from(CollectionsModelsMap._models.keys());
+	}
+
+	public static values() {
+		return Array.from(CollectionsModelsMap._models.values());
+	}
+
 	public static print() {
 		console.log(CollectionsModelsMap._models);
 	}

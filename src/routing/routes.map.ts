@@ -20,6 +20,14 @@ export default class RoutesMap {
 		return RoutesMap._routes.get(_.toUpper(method));
 	}
 
+	public static keys() {
+		return Array.from(RoutesMap._routes.keys());
+	}
+
+	public static values() {
+		return Array.from(RoutesMap._routes.values());
+	}
+
 	public static list(): any {
 		const obj: any = {};
 		const methods = RoutesMap.getMethods();

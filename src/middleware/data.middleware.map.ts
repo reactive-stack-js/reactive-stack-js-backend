@@ -16,5 +16,9 @@ export default class DataMiddlewareMap {
 		return DataMiddlewareMap._middlewares.get(criteria(scope, collection));
 	}
 
+	public static keys() {
+		return Array.from(DataMiddlewareMap._middlewares.keys());
+	}
+
 	private static readonly _middlewares: Map<string, Function> = new Map<string, Function>();
 }
