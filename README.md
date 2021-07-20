@@ -9,9 +9,11 @@ See the [TypeDoc documentation](https://reactive-stack-js.github.io/reactive-sta
 # Documentation
 
 ### ReactiveStackClient
-This is the main class in this library.
-- It processes client subscription requests, creates appropriate stores and subscribes to them to observe changes.
-- It extends RxJS:Subject, so that any websocket instance can subscribe to it, in order to forward updates back to the client.
+This is the main class.
+
+It processes client subscription requests, creates appropriate stores and subscribes to them to observe changes.
+
+It extends RxJS:Subject, so that any websocket instance can subscribe to it, in order to forward updates back to the client.
 
 ### DataMiddlewareMap
 
