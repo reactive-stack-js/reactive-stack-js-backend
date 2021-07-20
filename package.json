@@ -1,6 +1,6 @@
 {
 	"name": "reactive-stack-js-backend",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "reactive-stack backend",
 	"engines": {
 		"node": ">=14"
@@ -32,21 +32,21 @@
 		"latest": "yarn upgrade-interactive --latest"
 	},
 	"dependencies": {
-		"@types/lodash": "^4.14.161",
+		"@types/lodash": "^4.14.171",
 		"@types/mongoose": "^5.7.36",
 		"@types/node": "^14.11.2",
-		"@types/node-cron": "^2.0.3",
-		"fastify": "^3.4.1",
+		"@types/node-cron": "^2.0.4",
+		"fastify": "^3.19.1",
 		"jsondiffpatch": "^0.4.1",
 		"lodash": "^4.17.20",
-		"mongoose": "^5.10.6",
+		"mongoose": "^5.13.3",
 		"node-cron": "^2.0.3",
 		"rxjs": "^6.6.3",
 		"sift": "^13.3.5"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.2.7",
-		"@types/mocha": "^8.2.1",
+		"@types/chai": "^4.2.21",
+		"@types/mocha": "^8.2.3",
 		"chai": "^4.2.0",
 		"coveralls": "^3.0.9",
 		"mocha": "^8.3.0",
@@ -59,7 +59,7 @@
 		"tslint-config-prettier": "^1.18.0",
 		"tslint-etc": "^1.13.7",
 		"tslint-no-unused-expression-chai": "^0.1.4",
-		"typedoc": "^0.20.27",
+		"typedoc": "^0.21.4",
 		"typescript": "^4.3.2"
 	}
 }
