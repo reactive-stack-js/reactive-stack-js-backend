@@ -1,7 +1,7 @@
 ![reactive-stack-js](https://avatars0.githubusercontent.com/u/72337471?s=75)
 
 ## ReactiveStack backend
-See [reactive-stack-js](https://github.com/reactive-stack-js) for more info.
+See <a href="https://github.com/reactive-stack-js" target="_blank">reactive-stack-js</a> for more info.
 
 ## TypeDoc Documentation
 See the <a href="https://reactive-stack-js.github.io/reactive-stack-js-backend/docs/" target="_blank">TypeDoc documentation</a>.
@@ -49,21 +49,41 @@ Requires MongoDB 3.6+: This method returns an RxJS Subject that can be subscribe
 Requires MongoDB 4.0+: This method returns an RxJS Subject that can be subscribed to and thus observe the entire MongoDB database.
 
 ## Routes
-### RoutesMap
-### addFastifyRoutes
-### cleanRelativePath
 ### processFastifyBlipp
+This method stores all fastify routes into the ```RoutesMap``` in order to display them on request as a form of quick routes documentation.
+
+This method is set as ```blippLog``` options attribute during fastify registration of the ```fastify-blipp``` plugin. Eg. ```server.register(fastifyBlipp, {blippLog: processFastifyBlipp});```.
+
+### RoutesMap
+This is a map of all available routes. It is populated automatically during the execution of ```processFastifyBlipp```.
+
+### addFastifyRoutes
+This method adds all routes to fastify automatically. It requires as parameters a fastify instance and routes folder path.
+
+### cleanRelativePath
+Helper metohd used in ```addFastifyRoutes``` to generate the route path from filename and file location relative to routes root folder.
 
 ## Store
 ### AStore
+Abstract class for ```CountStore```, ```DocumentStore``` and ```CollectionStore``` implementations.
+
 ### EStoreType
+Enum for existing store types: ```COUNT | DOCUMENT | COLLECTION```.
+
 ### CountStore
+Count store, observes a particular query and returns only an integer representing the count of response rows.
+
 ### DocumentStore
+Document store, observes a particular query and returns all response rows.
+
 ### CollectionStore
+Collection store, observes a particular query and returns all response rows.
+
 ### storeFactory
+Store factory method, creates an appropriate AStore instance based on passed subscription parameters.
 
 ## Types
-These are self explanatory.
+These types are self explanatory.
 - CronJobType
 - WorkerType
 - StoreScopeType

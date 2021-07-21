@@ -38,7 +38,7 @@ import RoutesMap from './routing/routes.map';
 
 // routing functions
 import addFastifyRoutes from './routing/functions/add.fastify.routes';
-import cleanRelativePath from './routing/functions/add.fastify.routes';
+import cleanRelativePath from './routing/functions/clean.relative.path';
 import processFastifyBlipp from './routing/functions/process.fastify.blipp';
 
 // store
