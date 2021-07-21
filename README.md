@@ -15,11 +15,22 @@ It processes client subscription requests, creates appropriate stores and subscr
 
 It extends RxJS:Subject, so that any websocket instance can subscribe to it, in order to forward updates back to the client.
 
-### DataMiddlewareMap
-
 ### IConnectionManager
+Defines a ConnectionManager interface to be implemented by the application using this library.
+
+This implementation is required for the above ReactiveStackClient. An instance of ReactiveStackClient is calling IConnectionManager methods accordingly.
+
+### DataMiddlewareMap
+This is a map of all defined Data Middleware methods.
+
+A Data Middleware is tied to a store scope ```'count' | 'one' | 'many'``` and collection name and is used to modify an observed payload if necessary.
+For example, if based on users access permissions a portion of the payload needs to be removed or replaced, etc.
+
 ### initiateWorkers
+Method that initiates all workers. Takes folder path as attribute.
+
 ### initiateCronjobs
+Method that initiates all cronjobs. Takes folder path as attribute.
 
 ## Types
 ### ConnectionManagerRefreshType
