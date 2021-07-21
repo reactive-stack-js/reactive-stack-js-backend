@@ -34,11 +34,19 @@ Method that initiates all cronjobs. Takes folder path as attribute.
 
 ## MongoDB
 ### MongoDBConnector
+A MongoDB database connector class, used to initialize the database collection which Mongoose will then use.
+
+### processModels
+This method parses all models and adds them to the ```CollectionsModelsMap``` if they pass validation. The method takes the folder path for the models and an optional folder name(s) to exclude, for example ```mixins``` and similar.
 
 ### CollectionsModelsMap
-### processModels
+This is a map of all Mongoose models and related MongoDB collections. It is populated automatically during the execution of ```processModels```.
+
 ### observableModel
+Requires MongoDB 3.6+: This method returns an RxJS Subject that can be subscribed to and thus observe a particular MongoDB collection. This method takes a Mongoose model instance.
+
 ### observableDatabase
+Requires MongoDB 4.0+: This method returns an RxJS Subject that can be subscribed to and thus observe the entire MongoDB database.
 
 ## Routes
 ### RoutesMap
