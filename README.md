@@ -4,7 +4,7 @@
 See [reactive-stack-js](https://github.com/reactive-stack-js) for more info.
 
 ## TypeDoc Documentation
-See the [TypeDoc documentation](https://reactive-stack-js.github.io/reactive-stack-js-backend/docs/).
+See the <a href="https://reactive-stack-js.github.io/reactive-stack-js-backend/docs/" target="_blank">TypeDoc documentation</a>.
 
 # Documentation
 
@@ -32,16 +32,9 @@ Method that initiates all workers. Takes folder path as attribute.
 ### initiateCronjobs
 Method that initiates all cronjobs. Takes folder path as attribute.
 
-## Types
-### ConnectionManagerRefreshType
-### CronJobType
-### StoreScopeType
-### StoreSubscriptionConfigType
-### StoreSubscriptionUpdateType
-### WorkerType
-
 ## MongoDB
 ### MongoDBConnector
+
 ### CollectionsModelsMap
 ### processModels
 ### observableModel
@@ -60,3 +53,12 @@ Method that initiates all cronjobs. Takes folder path as attribute.
 ### DocumentStore
 ### CollectionStore
 ### storeFactory
+
+## Types
+These are self explanatory.
+- CronJobType
+- WorkerType
+- StoreScopeType
+- StoreSubscriptionConfigType
+- StoreSubscriptionUpdateType
+- ConnectionManagerRefreshType
