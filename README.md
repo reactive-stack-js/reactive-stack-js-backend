@@ -8,7 +8,7 @@ See the <a href="https://reactive-stack-js.github.io/reactive-stack-js-backend/d
 
 # Documentation
 
-### OwservableClient
+### ReactiveStackClient
 This is the main class.
 
 It processes client subscription requests, creates appropriate stores and subscribes to them to observe changes.
@@ -16,9 +16,9 @@ It processes client subscription requests, creates appropriate stores and subscr
 It extends RxJS:Subject, so that any websocket instance can subscribe to it, in order to forward updates back to the client.
 
 ### IConnectionManager
-Defines a ConnectionManager interface to be implemented by the application using this library.
+Defines a Connection Manager interface to be implemented by the application using this library.
 
-This implementation is required for the above OwservableClient. An instance of OwservableClient is calling IConnectionManager methods accordingly.
+This implementation is required for the above ```ReactiveStackClient```. An instance of ```ReactiveStackClient``` is calling ```IConnectionManager``` methods accordingly.
 
 ### DataMiddlewareMap
 This is a map of all defined Data Middleware methods.
