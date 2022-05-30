@@ -41,7 +41,7 @@
 		"lodash": "^4.17.20",
 		"mongoose": "^5.13.3",
 		"node-cron": "^2.0.3",
-		"rxjs": "^6.6.3",
+		"rxjs": "^7.0.0",
 		"sift": "^13.3.5"
 	},
 	"devDependencies": {
